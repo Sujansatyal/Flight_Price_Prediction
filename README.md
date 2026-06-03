@@ -1,2 +1,17 @@
-# Flight_Price_Prediction
-Flight Price Prediction using Machine Learning and Streamlit. This project analyzes airline ticket pricing patterns through EDA, feature engineering, and predictive modeling to estimate flight fares based on airline, route, travel class, duration, stops, and booking time.
+# Flight Price Prediction System
+
+## Project Overview
+This project predicts flight ticket prices using Machine Learning and provides predictions through a Streamlit web application.
+
+## Technologies Used
+- Python
+- Pandas
+- Scikit-Learn
+- Streamlit
+- Joblib
+
+## How to Run
+
+```bash
+pip install -r requirements.txt
+streamlit run app.py
