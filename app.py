@@ -4,21 +4,16 @@ import joblib
 
 # Load Saved Objects
 
-st.write("Loading files...")
-
-try:
-    model = joblib.load("Model/model.joblib")
-
-except Exception as e:
-    st.error(f"Model Error: {e}")
-
-try:
-    feature_names = joblib.load("Model/feature_names.joblib")
-    ohe = joblib.load("Model/ohe.joblib")
-    class_encoder = joblib.load("Model/class_encoder.joblib")
-    stops_encoder = joblib.load("Model/stops_encoder.joblib")
-except Exception as e:
-    st.error(f"Encoder Error: {e}")
+@st.cache_resource
+def load_artifacts():
+     st.write("Loading files...")
+     model = joblib.load("Model/model.joblib")
+     feature_names = joblib.load("Model/feature_names.joblib")
+     ohe = joblib.load("Model/ohe.joblib")
+     class_encoder = joblib.load("Model/class_encoder.joblib")
+     stops_encoder = joblib.load("Model/stops_encoder.joblib")
+     return model, feature_names, ohe, class_encoder, stops_encoder
+model, feature_names, ohe, class_encoder, stops_encoder = load_artifacts()
 
 # Page Config
 
