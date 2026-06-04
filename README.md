@@ -12,6 +12,12 @@ This project predicts flight ticket prices using Machine Learning and provides p
 
 ## How to Run
 
-```bash
+1. Clone the Repository
+git clone <repository-url>
+cd Flight_Price_Prediction
+2. Install Dependencies
 pip install -r requirements.txt
-streamlit run app.py
+3. Run Streamlit Application
+streamlit run project/app.py
+4. Open Browser
+http://localhost:8501

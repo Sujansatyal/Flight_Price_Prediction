@@ -2,16 +2,14 @@ import streamlit as st
 import pandas as pd
 import joblib
 
-# Load Saved Objects
-
+# Load Saved Objects in a Cached Function
 @st.cache_resource
 def load_artifacts():
-     st.write("Loading files...")
-     model = joblib.load("Model/model.joblib")
-     feature_names = joblib.load("Model/feature_names.joblib")
-     ohe = joblib.load("Model/ohe.joblib")
-     class_encoder = joblib.load("Model/class_encoder.joblib")
-     stops_encoder = joblib.load("Model/stops_encoder.joblib")
+     model = joblib.load("project/Model/model.joblib")
+     feature_names = joblib.load("project/Model/feature_names.joblib")
+     ohe = joblib.load("project/Model/ohe.joblib")
+     class_encoder = joblib.load("project/Model/class_encoder.joblib")
+     stops_encoder = joblib.load("project/Model/stops_encoder.joblib")
      return model, feature_names, ohe, class_encoder, stops_encoder
 model, feature_names, ohe, class_encoder, stops_encoder = load_artifacts()
 
@@ -69,7 +67,7 @@ travel_class = st.selectbox(
 duration = st.number_input(
     "Duration (Hours)",
     min_value=0.0,
-    step=0.1
+    step=1.0
 )
 
 days_left = st.number_input(
@@ -127,6 +125,7 @@ if st.button("Predict Price"):
 
     prediction = model.predict(final_input)
 
+# Display Prediction
     st.success(
         f"Estimated Flight Price: ₹ {prediction[0]:,.2f}"
     )
